@@ -23,7 +23,7 @@ public:
     }
 
     void run() {
-        Animal::move(work_way_);
+        move(work_way_);
         beingFaster();
     }
 

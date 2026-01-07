@@ -21,7 +21,7 @@ public:
 
     void jump() {
         if (play_way_) {
-            Animal::move(work_way_);
+            move(work_way_);
         }
         changePlay();
     }
