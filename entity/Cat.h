@@ -10,4 +10,6 @@
 #include "Animal.cpp"
 
 
+class Cat;
+
 #endif //LEARNING_ANIMAL_H

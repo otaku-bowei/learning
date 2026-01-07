@@ -8,6 +8,9 @@
 #include <memory>
 #include <vector>
 
-using AnimalVector = std::vector<Animal>;
+// 此处关注是否使用 指针的区别
+using AnimalVector = std::vector<Animal*>;
+
+void testPolymorphism();
 
 #endif //LEARNING_POLYMORPHISM_H

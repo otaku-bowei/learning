@@ -11,4 +11,7 @@
 #include <memory>
 #include <vector>
 
+
+class AnimalManager;
+
 #endif //LEARNING_ANIMALMANAGER_H

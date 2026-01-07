@@ -9,4 +9,6 @@
 #include "Animal.cpp"
 
 
+class Dog;
+
 #endif //LEARNING_ANIMAL_H

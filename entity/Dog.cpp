@@ -9,6 +9,10 @@ class Dog : public Animal {
 private:
     int work_way_;
 
+    void beingFaster() {
+        work_way_++;
+    }
+
 public:
     explicit Dog(const std::string& name, const int workWay) : Animal(name), work_way_(workWay) {
     }
@@ -26,10 +30,6 @@ public:
     // 继承的成员函数
     [[nodiscard]] std::string getName() const override {
         return name_;
-    }
-
-    void beingFaster() {
-        work_way_++;
     }
 
 };

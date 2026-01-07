@@ -3,9 +3,9 @@
 #include "entity/Animal.h"
 #include <vector>
 #include <memory>
-
+#include "demo/Polymorphism.h"
 
 
 int main() {
-
+    testPolymorphism();
 }

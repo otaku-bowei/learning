@@ -7,6 +7,7 @@
 #include <string>
 #include <iostream>
 
+class Animal;
 
 
 #endif //LEARNING_ANIMAL_H
