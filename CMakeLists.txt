@@ -14,4 +14,6 @@ add_executable(learning main.cpp
         entity/AnimalManager.cpp
         entity/AnimalManager.h
         demo/Polymorphism.cpp
-        demo/Polymorphism.h)
+        demo/Polymorphism.h
+        demo/Collections.cpp
+        demo/Collections.h)

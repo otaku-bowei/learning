@@ -4,8 +4,10 @@
 #include <vector>
 #include <memory>
 #include "demo/Polymorphism.h"
+#include "demo/Collections.h"
 
 
 int main() {
-    testPolymorphism();
+    // testPolymorphism();
+    testVector();
 }
