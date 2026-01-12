@@ -8,6 +8,10 @@
 #include <iostream>
 #include <random>
 #include <algorithm>
+#include "../entity/Animal.h"
+#include "../entity/Dog.h"
+#include "../entity/Cat.h"
+
 
 template <typename T>
 

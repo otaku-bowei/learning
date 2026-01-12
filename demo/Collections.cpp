@@ -28,6 +28,28 @@ void testVector() {
     std::cout << "进行排序后"<< std::endl;
     showAllNumbers(nums);
 
+    //5.去重--只删除相邻的重复函数
+    for (int i = 0; i < 100; i++) {
+        nums.push_back(dis(gen));
+    }
+    showAllNumbers(nums);
+    std::ranges::sort(nums);
+    auto [new_begin, new_end] = std::ranges::unique(nums.begin(), nums.end());
+    // showAllNumbers(nums);
+    nums.erase(new_begin, new_end);
+    std::cout << nums.size() << std::endl;
+
+    //6.做对象的去重
+    std::vector<Animal*> animalVector;
+    auto dog1 = std::make_unique<Dog>("吉娃娃", 1);
+    auto dog2 = std::make_unique<Dog>("马犬", 3);
+    auto cat1 = std::make_unique<Cat>("王百万", true, 5);
+    animalVector.push_back(std::make_unique<Dog>("吉娃娃", 1));
+    animalVector.push_back(std::make_unique<Dog>("马犬", 3));
+    animalVector.push_back(std::make_unique<Cat>("王百万", true, 5));
+
+
+
 }
 
 

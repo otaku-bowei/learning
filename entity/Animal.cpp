@@ -42,4 +42,16 @@ public:
     [[nodiscard]] int getLocation() const {
         return location_;
     }
+
+
+    //实现 equal 操作
+    // 方法1：成员函数形式的 operator==
+    bool operator==(const Animal& other) const {
+        return name_ == other.name_;
+    }
+
+    // 方法2：友元函数形式的 operator==（允许隐式转换）
+    friend bool operator==(const Animal& a, const Animal& b) {
+        return a.name_ == b.name_;
+    }
 };
