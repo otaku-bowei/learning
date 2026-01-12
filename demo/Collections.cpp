@@ -31,9 +31,10 @@ void testVector() {
 }
 
 
-// 泛型，模版必须在函数前定义
+// 泛型，模版必须在函数前定义，使用断言来判断泛型上下界
 template <typename T>
 void showAllNumbers(const std::vector<T>& nums) {
+    static_assert(std::is_integral_v<T>, "T必须是整数类型");
     for (int i = 0; i < nums.size(); i++) {
         std::cout << "数字为:"  << nums[i] << std::endl;
     }
