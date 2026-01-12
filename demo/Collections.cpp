@@ -4,7 +4,7 @@
 
 #include "Collections.h"
 
-#include <algorithm>
+
 
 
 void testVector() {
@@ -18,17 +18,23 @@ void testVector() {
         nums.push_back(dis(gen));
     }
     //3.遍历vector
-    for (int i = 0; i < 5; i++) {
-        std::cout << "数字为:"  << nums[i] << std::endl;
-    }
+    showAllNumbers(nums);
     //4.排序
-    std::sort(nums.begin() + 2, nums.end() - 1);
+    std::ranges::sort(nums.begin() + 2, nums.end() - 1);
+    std::cout << "进行排序后"<< std::endl;
+    showAllNumbers(nums);
 
+    std::ranges::sort(nums);
+    std::cout << "进行排序后"<< std::endl;
+    showAllNumbers(nums);
 
 }
 
-void showAllNumbers(std::vector<T> nums) {
-    for (int i = 0; i < 5; i++) {
+
+// 泛型，模版必须在函数前定义
+template <typename T>
+void showAllNumbers(const std::vector<T>& nums) {
+    for (int i = 0; i < nums.size(); i++) {
         std::cout << "数字为:"  << nums[i] << std::endl;
     }
 }
