@@ -19,4 +19,8 @@ add_executable(learning main.cpp
         demo/p1/Polymorphism.cpp
         include/Polymorphism.h
         demo/p2/Collections.cpp
-        include/Collections.h)
+        include/Collections.h
+        demo/p3/LambdaTest.cpp
+        include/LambdaTest.h
+        entity/TrainAnimal.cpp
+        include/TrainAnimal.h)

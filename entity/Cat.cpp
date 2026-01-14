@@ -34,3 +34,7 @@ void Cat::jump() {
 void Cat::changePlay() {
     play_way_ = !play_way_;
 }
+
+const void Cat::makeAnimalSayOtherThings(const std::string &sentence) {
+    std::cout << getName() << " says:  我是一只小猫，我学会了说" << sentence << std::endl;
+}

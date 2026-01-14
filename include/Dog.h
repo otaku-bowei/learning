@@ -29,6 +29,8 @@ public:
     // 继承的成员函数
     [[nodiscard]] std::string getName() const override ;
 
+    const void makeAnimalSayOtherThings(const std::string &sentence);
+
 };
 
 #endif //LEARNING_ANIMAL_H

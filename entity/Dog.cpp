@@ -23,3 +23,7 @@ void Dog::run() {
 [[nodiscard]] std::string Dog::getName() const {
     return name_;
 }
+
+const void Dog::makeAnimalSayOtherThings(const std::string &sentence) {
+    std::cout << getName() << " says:  我是一只小犬，我学会了说" << sentence << std::endl;
+}

@@ -8,9 +8,11 @@
 #include <iostream>
 
 #include "Animal.h"
+#include "Dog.h"
+#include "TrainAnimal.h"
 
 
-class Cat : public Animal {
+class Cat : public Animal, public TrainAnimal {
 
 private:
     bool play_way_;
@@ -31,6 +33,8 @@ public:
     [[nodiscard]] bool showWorkWay() const ;
 
     void changePlay();
+
+    const void makeAnimalSayOtherThings(const std::string &sentence);
 
 };
 

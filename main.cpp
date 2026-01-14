@@ -5,10 +5,12 @@
 #include <memory>
 #include "include/Polymorphism.h"
 #include "include/Collections.h"
+#include "include/LambdaTest.h"
 
 
 int main() {
     // testPolymorphism();
     // testVector();
-    testMap();
+    // testMap();
+    testLambdaTest();
 }
