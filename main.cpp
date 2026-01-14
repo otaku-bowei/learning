@@ -1,13 +1,14 @@
 #include <iostream>
 // main.cpp - 使用示例
-#include "entity/Animal.h"
+#include "include/Animal.h"
 #include <vector>
 #include <memory>
-#include "demo/Polymorphism.h"
-#include "demo/Collections.h"
+#include "include/Polymorphism.h"
+#include "include/Collections.h"
 
 
 int main() {
     // testPolymorphism();
-    testVector();
+    // testVector();
+    testMap();
 }

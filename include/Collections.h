@@ -8,10 +8,11 @@
 #include <iostream>
 #include <random>
 #include <algorithm>
-#include "../entity/Animal.h"
-#include "../entity/Dog.h"
-#include "../entity/Cat.h"
-
+#include "Animal.h"
+#include "Dog.h"
+#include "Cat.h"
+#include "AnimalManager.h"
+#include <unordered_set>
 
 template <typename T>
 
@@ -23,6 +24,12 @@ void testVector();
 
 template <typename T>
 void showAllNumbers(const std::vector<T>& nums);
+
+template <typename U>
+void showAllAnimal(const std::vector<U*>& animals);
+
+template<typename T, typename KeyFunc>
+std::vector<T*> remove_duplicates_keep_order(const std::vector<T*>& items, KeyFunc key_func);
 
 void testMap();
 

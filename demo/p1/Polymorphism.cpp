@@ -1,7 +1,7 @@
 //
 // Created by hp on 2026/1/7.
 //
-#include "Polymorphism.h"
+#include "../../include/Polymorphism.h"
 
 // 创建两只狗和一只猫
 
@@ -13,9 +13,9 @@ void testPolymorphism() {
     auto dog1 = std::make_unique<Dog>("吉娃娃", 1);
     auto dog2 = std::make_unique<Dog>("马犬", 3);
     auto cat1 = std::make_unique<Cat>("王百万", true, 5);
-    // animals.push_back(dog1);
-    // animals.push_back(dog2);
-    // animals.push_back(cat1);
+    animals.push_back(dog1.get());
+    animals.push_back(dog2.get());
+    animals.push_back(cat1.get());
 
     // &&可以引用指针的地址
     // auto &&cat2 = std::move(cat1);
@@ -24,14 +24,14 @@ void testPolymorphism() {
     //move 操作会将指针完全转移到另一个变量
     // auto cat2 = std::move(cat1);
     // auto cat2 = cat1.get();
-    auto cat2(std::move(cat1));
+    // auto cat2(std::move(cat1));
     // cat2->jump();
     cat1->jump();
-    cat2->jump();
+    // cat2->jump();
 
-    animals.push_back(std::move(dog1));
-    animals.push_back(std::move(dog2));
-    animals.push_back(std::move(cat1));
+    // animals.push_back(std::move(dog1));
+    // animals.push_back(std::move(dog2));
+    // animals.push_back(std::move(cat1));
 
     const auto manager = AnimalManager(animals);
     manager.countOff();

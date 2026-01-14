@@ -3,17 +3,20 @@ project(learning)
 
 set(CMAKE_CXX_STANDARD 20)
 
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+
 add_executable(learning main.cpp
         entity/Animal.cpp
-        entity/Animal.h
-        entity/Cat.h
+        include/Animal.h
+        include/Cat.h
         entity/Cat.cpp
-        entity/Cat.h
+        include/Cat.h
         entity/Dog.cpp
-        entity/Dog.h
+        include/Dog.h
         entity/AnimalManager.cpp
-        entity/AnimalManager.h
-        demo/Polymorphism.cpp
-        demo/Polymorphism.h
-        demo/Collections.cpp
-        demo/Collections.h)
+        include/AnimalManager.h
+        demo/p1/Polymorphism.cpp
+        include/Polymorphism.h
+        demo/p2/Collections.cpp
+        include/Collections.h)
