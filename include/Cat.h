@@ -8,11 +8,12 @@
 #include <iostream>
 
 #include "Animal.h"
+#include "CatFamily.h"
 #include "Dog.h"
 #include "TrainAnimal.h"
 
 
-class Cat : public Animal, public TrainAnimal {
+class Cat : public CatFamily, public TrainAnimal {
 
 private:
     bool play_way_;
@@ -34,7 +35,9 @@ public:
 
     void changePlay();
 
-    const void makeAnimalSayOtherThings(const std::string &sentence);
+    const void makeAnimalSayOtherThings(const std::string &sentence) override;
+
+    const bool belong(const std::string &name) override;
 
 };
 

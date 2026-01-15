@@ -43,6 +43,8 @@ public:
 
     // 方法2：友元函数形式的 operator==（允许隐式转换）
     friend bool operator==(const Animal& a, const Animal& b);
+
+    virtual const bool belong(const std::string &name);
 };
 
 

@@ -7,9 +7,11 @@
 #include <string>
 #include <iostream>
 #include "Animal.h"
+#include "DogFamily.h"
+#include "TrainAnimal.h"
 
 
-class Dog : public Animal {
+class Dog : public DogFamily , public TrainAnimal{
 
 private:
     int work_way_;
@@ -29,7 +31,9 @@ public:
     // 继承的成员函数
     [[nodiscard]] std::string getName() const override ;
 
-    const void makeAnimalSayOtherThings(const std::string &sentence);
+    const void makeAnimalSayOtherThings(const std::string &sentence) override;
+
+    const bool belong(const std::string &name) override;
 
 };
 

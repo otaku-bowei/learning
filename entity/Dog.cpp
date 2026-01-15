@@ -6,7 +6,7 @@
 
 
 
-Dog::Dog(const std::string& name, const int workWay) : Animal(name), work_way_(workWay) {
+Dog::Dog(const std::string& name, const int workWay) : DogFamily(name), work_way_(workWay) {
 }
 
 // 虚函数 - C++实现多态的关键，类似Java的抽象方法
@@ -26,4 +26,9 @@ void Dog::run() {
 
 const void Dog::makeAnimalSayOtherThings(const std::string &sentence) {
     std::cout << getName() << " says:  我是一只小犬，我学会了说" << sentence << std::endl;
+}
+
+
+const bool Dog::belong(const std::string &name) {
+    return name.find("丁") != std::string::npos;
 }

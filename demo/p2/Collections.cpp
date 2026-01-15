@@ -6,6 +6,8 @@
 
 #include <map>
 
+#include "Polymorphism.h"
+
 
 void testVector() {
     //1.创建一个vector
@@ -40,26 +42,33 @@ void testVector() {
     std::cout << nums.size() << std::endl;
 
     //6.做对象的去重
-    std::vector<Animal*> animalVector;
+    AnimalVector animalVector;
     auto dog1 = std::make_unique<Dog>("吉娃娃", 1);
     auto dog2 = std::make_unique<Dog>("马犬", 3);
     auto cat1 = std::make_unique<Cat>("王百万", true, 5);
     auto cat2 = std::make_unique<Cat>("王百万", true, 10);
-    animalVector.push_back(cat2.get());
-    animalVector.push_back(dog1.get());
-    animalVector.push_back(dog2.get());
-    animalVector.push_back(cat1.get());
+    // animalVector.push_back(cat2.get());
+    // animalVector.push_back(dog1.get());
+    // animalVector.push_back(dog2.get());
+    // animalVector.push_back(cat1.get());
+    animalVector.push_back(std::move(cat2));
+    animalVector.push_back(std::move(dog1));
+    animalVector.push_back(std::move(dog2));
+    animalVector.push_back(std::move(cat1));
 
     showAllAnimal(animalVector);
-    std::ranges::sort(animalVector, [](Animal* a, Animal* b) {
-        return a->equal(b);
-    });
-    auto [new_begin1, new_end1] = std::ranges::unique(animalVector.begin(), animalVector.end());
-    //默认比较内存地址
-    animalVector.erase(new_begin1, new_end1);
-    showAllAnimal(animalVector);
-    animalVector = remove_duplicates_keep_order(animalVector, [](const Animal* a) {return a->getName();});
-    showAllAnimal(animalVector);
+    // std::ranges::sort(animalVector, [](Animal* a, Animal* b) {
+    //     return a->equal(b);
+    // });
+    // std::ranges::sort(animalVector, [](AnimalPtr a, AnimalPtr b) {
+    //     return a->equal(b.get());
+    // });
+    // auto [new_begin1, new_end1] = std::ranges::unique(animalVector.begin(), animalVector.end());
+    // //默认比较内存地址
+    // animalVector.erase(new_begin1, new_end1);
+    // showAllAnimal(animalVector);
+    // animalVector = remove_duplicates_keep_order(animalVector, [](const Animal* a) {return a->getName();});
+    // showAllAnimal(animalVector);
 
 
 }
@@ -75,15 +84,18 @@ void showAllNumbers(const std::vector<T>& nums) {
 }
 
 template <typename U>
-void showAllAnimal(const std::vector<U*>& animals) {
+// void showAllAnimal(const std::vector<U*>& animals) {
+void showAllAnimal(const std::vector<std::unique_ptr<U>> &animals) {
     static_assert(std::is_base_of_v<Animal, U>, "U必须是动物");
-    auto animalManager = std::make_unique<AnimalManager>(animals);
+    // auto animalManager = std::make_unique<AnimalManager>(animals);
+    auto animalManager = std::make_unique<AnimalManager>();
     animalManager->countOff();
 }
 
 // 重新处理vector做去重
 template<typename T, typename KeyFunc>
-std::vector<T*> remove_duplicates_keep_order(const std::vector<T*>& items, KeyFunc key_func) {
+// std::vector<T*> remove_duplicates_keep_order(const std::vector<T*>& items, KeyFunc key_func) {
+std::vector<T*> remove_duplicates_keep_order(const std::vector<std::unique_ptr<T>>& items, KeyFunc key_func) {
     using KeyType = decltype(key_func(std::declval<T*>()));
     std::unordered_set<KeyType> seen;
     std::vector<T*> result;

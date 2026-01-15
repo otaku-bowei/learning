@@ -9,9 +9,10 @@
 #include <vector>
 
 // 此处关注是否使用 指针的区别
-using AnimalVector = std::vector<Animal*>;
+// using AnimalVector = std::vector<Animal*>;
 // using AnimalVector = std::vector<Animal>;
-// using AnimalVector = std::vector<std::unique_ptr<Animal>>;
+using AnimalPtr = std::unique_ptr<Animal>;
+using AnimalVector = std::vector<AnimalPtr>;
 
 void testPolymorphism();
 

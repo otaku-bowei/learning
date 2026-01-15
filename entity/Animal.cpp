@@ -53,3 +53,7 @@ bool operator==(const Animal &a, const Animal &b) {
     return a.name_ == b.name_;
 }
 
+
+const bool Animal::belong(const std::string &name) {
+    return false;
+}

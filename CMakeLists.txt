@@ -23,4 +23,10 @@ add_executable(learning main.cpp
         demo/p3/LambdaTest.cpp
         include/LambdaTest.h
         entity/TrainAnimal.cpp
-        include/TrainAnimal.h)
+        include/TrainAnimal.h
+        demo/p4/DesignModel.cpp
+        include/DesignModel.h
+        entity/CatFamily.cpp
+        include/CatFamily.h
+        entity/DogFamily.cpp
+        include/DogFamily.h)

@@ -6,11 +6,14 @@
 #include "include/Polymorphism.h"
 #include "include/Collections.h"
 #include "include/LambdaTest.h"
+#include "include/DesignModel.h"
 
 
 int main() {
     // testPolymorphism();
     // testVector();
     // testMap();
-    testLambdaTest();
+    // testLambdaTest();
+    // workerFind();
+    factory();
 }

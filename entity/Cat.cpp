@@ -5,7 +5,7 @@
 #include "../include/Cat.h"
 
 
-Cat::Cat(const std::string &name, const bool playWay, const int workWay) : Animal(name), play_way_(playWay),
+Cat::Cat(const std::string &name, const bool playWay, const int workWay) : CatFamily(name), play_way_(playWay),
                                                                            work_way_(workWay) {
 }
 
@@ -37,4 +37,8 @@ void Cat::changePlay() {
 
 const void Cat::makeAnimalSayOtherThings(const std::string &sentence) {
     std::cout << getName() << " says:  我是一只小猫，我学会了说" << sentence << std::endl;
+}
+
+const bool Cat::belong(const std::string &name) {
+    return name.find("王") != std::string::npos;
 }
