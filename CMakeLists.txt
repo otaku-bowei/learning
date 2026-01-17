@@ -29,4 +29,8 @@ add_executable(learning main.cpp
         entity/CatFamily.cpp
         include/CatFamily.h
         entity/DogFamily.cpp
-        include/DogFamily.h)
+        include/DogFamily.h
+        demo/p5/ORM.cpp
+        include/ORM.h
+
+)
