@@ -3,3 +3,7 @@
 //
 
 #include "../../include/ORM.h"
+
+void insertOneUser() {
+    doSomething("insert into rbac.user(id, user_name, ppassword) values (1, 'aaa', 'aaaa')");
+}

@@ -5,8 +5,10 @@
 #ifndef LEARNING_ORM_H
 #define LEARNING_ORM_H
 
+#include "UserDao.h"
 class ORM {
 };
 
+void insertOneUser();
 
 #endif //LEARNING_ORM_H

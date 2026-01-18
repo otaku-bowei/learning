@@ -16,4 +16,6 @@ class UserDao {
 //CURD
 void insertBatchUser(std::vector<std::unique_ptr<User>> &entities, int batch_size);
 
+void doSomething(const std::string &sql);
+
 #endif //LEARNING_USERDAO_H

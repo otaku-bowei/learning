@@ -54,17 +54,22 @@ add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS}
 add_library(libodb_headers INTERFACE)
 # 创建libodb-mysql头文件接口库
 add_library(libodb_mysql_headers INTERFACE)
+add_library(odb_headers INTERFACE)
 target_include_directories(libodb_mysql_headers INTERFACE
         ${libodb-mysql_SOURCE_DIR}
 )
 target_include_directories(libodb_headers INTERFACE
         ${libodb_SOURCE_DIR}
 )
+target_include_directories(odb_headers INTERFACE
+        ${odb_SOURCE_DIR}
+)
 
 # 创建主可执行文件后链接
 target_link_libraries(${PROJECT_NAME} PRIVATE
         libodb_headers
         libodb_mysql_headers
+        odb_headers
 )
 
 

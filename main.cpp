@@ -7,6 +7,7 @@
 #include "include/Collections.h"
 #include "include/LambdaTest.h"
 #include "include/DesignModel.h"
+#include "include/ORM.h"
 
 
 int main() {
@@ -15,5 +16,6 @@ int main() {
     // testMap();
     // testLambdaTest();
     // workerFind();
-    factory();
+    // factory();
+    insertOneUser();
 }

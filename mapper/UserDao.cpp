@@ -22,3 +22,11 @@ void insertBatchUser(std::vector<std::unique_ptr<User>> &entities, const int bat
     }
 }
 
+
+void doSomething(const std::string &sql) {
+    auto db = connect();
+    // 开始一个事务
+    odb::transaction t(db -> begin());
+    db->execute(sql);
+    t.commit();
+}
