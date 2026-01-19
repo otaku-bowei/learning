@@ -16,25 +16,26 @@ class User {
 
 private:
 #pragma db id not_null column("id")
-    long id_;
+    long id_{};
 #pragma db not_null column("user_name")
     std::string username_;
 #pragma db not_null column("password")
     std::string password_;
 #pragma db not_null column("age")
-    int age_;
+    int age_{};
 #pragma db not_null column("birthday") type("DATETIME")
-    time_t birthday_;
+    time_t birthday_{};
 #pragma db not_null column("create_time") type("DATETIME")
-    time_t create_time_;
+    time_t create_time_{};
 #pragma db not_null column("create_user")
     std::string create_user_;
 #pragma db not_null column("update_time") type("DATETIME")
-    time_t update_time_;
+    time_t update_time_{};
 #pragma db not_null column("update_user")
     std::string update_user_;
 
 public:
+    User();
     User(long id, std::string &username, std::string &password, int age, time_t birthday, time_t create_time,
          std::string &create_user, time_t update_time, std::string &update_user);
 
