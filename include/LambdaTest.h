@@ -8,6 +8,7 @@
 #include <iostream>
 #include <ostream>
 #include <string>
+#include <memory>
 #include "Cat.h"
 #include "Dog.h"
 #include "Animal.h"

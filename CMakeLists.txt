@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 3.15)
 project(learning)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 
 # 尝试查找系统已安装的ODB
@@ -17,6 +19,16 @@ file(GLOB_RECURSE SOURCES
         "*.cpp"
         "entity/*.cpp"
         "demo/*/*.cpp"
+)
+
+link_directories(/usr/lib/x86_64-linux-gnu)
+link_libraries(
+        odb
+        odb-mysql
+        odb-sqlite
+        mysqlclient
+        sqlite3
+        pthread
 )
 
 file(GLOB_RECURSE HEADERS
