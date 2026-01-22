@@ -6,7 +6,7 @@
 
 #include <odb/pre.hxx>
 
-#include "../../include/User-odb.hxx"
+#include "User-odb.hxx"
 
 #include <cassert>
 #include <cstring>  // std::memcpy
