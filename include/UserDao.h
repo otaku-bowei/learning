@@ -8,7 +8,8 @@
 #include <iostream>
 #include <odb/mysql/database.hxx>
 #include "MysqlDb.h"
-#include "User.h"
+// #include "User.h"
+#include "../entity/odb/User-odb.hxx"
 
 class UserDao {
 };

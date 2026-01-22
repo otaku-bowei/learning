@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odb xmlns="http://www.codesynthesis.com/odb"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <!-- 指定数据库类型 -->
+    <database>
+        <name>pgsql</name> <!-- 或 mysql、oracle、sqlite -->
+        <options>
+            <option name="generate-prepared-statements">true</option>
+            <option name="default-parameter-type">native</option>
+        </options>
+    </database>
+
+    <!-- 输出设置 -->
+    <output>
+        <header-extension>.hxx</header-extension>
+        <source-extension>.cxx</source-extension>
+        <header-preinclude>odb/pre.hxx</header-preinclude>
+        <header-postinclude>odb/post.hxx</header-postinclude>
+        <source-preinclude>odb/pre.hxx</source-preinclude>
+        <source-postinclude>odb/post.hxx</source-postinclude>
+    </output>
+</odb>
