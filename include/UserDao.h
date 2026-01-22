@@ -6,9 +6,7 @@
 #define LEARNING_USERDAO_H
 #include <memory>   // std::unique_ptr
 #include <iostream>
-#include <odb/mysql/database.hxx>
 #include "MysqlDb.h"
-// #include "User.h"
 #include "User-odb.hxx"
 
 class UserDao {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeDeletion="false">
+    <option name="confirmBeforeDeletion" value="false" />
     <serverData>
       <paths name="远程主机 (07889727-81c3-4ce5-b130-5c8f0388b28d)">
         <serverdata>

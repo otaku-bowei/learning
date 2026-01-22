@@ -31,6 +31,7 @@ link_libraries(
         pthread
 )
 
+
 file(GLOB_RECURSE HEADERS
         "*.h"
         "include/*.h"
@@ -40,6 +41,9 @@ file(GLOB_RECURSE HEADERS
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS}
         entity/model/User.cpp
         include/User.h
+        include/User-odb.cxx
+        include/User-odb.hxx
+        include/User-odb.ixx
         config/MysqlDb.cpp
         include/MysqlDb.h
         mapper/UserDao.cpp
