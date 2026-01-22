@@ -9,7 +9,7 @@
 #include <odb/mysql/database.hxx>
 #include "MysqlDb.h"
 // #include "User.h"
-#include "../entity/odb/User-odb.hxx"
+#include "User-odb.hxx"
 
 class UserDao {
 };
