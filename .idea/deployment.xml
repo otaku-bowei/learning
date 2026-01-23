@@ -9,7 +9,11 @@
             <mapping deploy="/tmp/tmp.RpGd52Kree/learning" local="$PROJECT_DIR$" web="http:///learning.com" />
           </mappings>
           <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-remote-debug" />
+            <excludedPath local="true" path="$PROJECT_DIR$/../../../../home/ubuntu/project/build" />
+            <excludedPath local="true" path="$PROJECT_DIR$/../../../../home/ubuntu/cplus/object/learning/tmp/tmp.RpGd52Kree/learning/debug" />
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release-docker" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug-" />
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
           </excludedPaths>

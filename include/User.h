@@ -7,7 +7,7 @@
 
 #include <string>
 #include <odb/core.hxx>
-#include <ctime>
+#include <>
 
 
 #pragma db object
@@ -24,26 +24,26 @@ private:
 #pragma db not_null column("age")
     int age_{};
 #pragma db not_null column("birthday") type("DATETIME")
-    time_t birthday_{};
+    unsigned long long birthday_{};
 #pragma db not_null column("create_time") type("DATETIME")
-    time_t create_time_{};
+    unsigned long long create_time_{};
 #pragma db not_null column("create_user")
     std::string create_user_;
 #pragma db not_null column("update_time") type("DATETIME")
-    time_t update_time_{};
+    unsigned long long update_time_{};
 #pragma db not_null column("update_user")
     std::string update_user_;
 
 public:
     User();
-    User(long id, std::string &username, std::string &password, int age, time_t birthday, time_t create_time,
-         std::string &create_user, time_t update_time, std::string &update_user);
+    User(long id, std::string &username, std::string &password, int age, unsigned long long birthday, unsigned long long create_time,
+         std::string &create_user, unsigned long long update_time, std::string &update_user);
 
     [[nodiscard]] std::string getUsername() const;
 
     [[nodiscard]] int getAge() const;
 
-    [[nodiscard]] time_t getBirthday() const;
+    [[nodiscard]] unsigned long long getBirthday() const;
 
     [[nodiscard]] long getId() const;
 };

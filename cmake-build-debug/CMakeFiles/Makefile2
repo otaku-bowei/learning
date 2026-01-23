@@ -85,12 +85,12 @@ clean: CMakeFiles/learning.dir/clean
 CMakeFiles/learning.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/learning.dir/build.make CMakeFiles/learning.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/learning.dir/build.make CMakeFiles/learning.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ubuntu/cplus/object/learning/tmp/tmp.RpGd52Kree/learning/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18 "Built target learning"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ubuntu/cplus/object/learning/tmp/tmp.RpGd52Kree/learning/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 "Built target learning"
 .PHONY : CMakeFiles/learning.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/learning.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/cplus/object/learning/tmp/tmp.RpGd52Kree/learning/cmake-build-debug/CMakeFiles 18
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/cplus/object/learning/tmp/tmp.RpGd52Kree/learning/cmake-build-debug/CMakeFiles 20
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/learning.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/cplus/object/learning/tmp/tmp.RpGd52Kree/learning/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/learning.dir/rule
@@ -102,7 +102,7 @@ learning: CMakeFiles/learning.dir/rule
 # codegen rule for target.
 CMakeFiles/learning.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/learning.dir/build.make CMakeFiles/learning.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ubuntu/cplus/object/learning/tmp/tmp.RpGd52Kree/learning/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18 "Finished codegen for target learning"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ubuntu/cplus/object/learning/tmp/tmp.RpGd52Kree/learning/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 "Finished codegen for target learning"
 .PHONY : CMakeFiles/learning.dir/codegen
 
 # clean rule for target.
