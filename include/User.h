@@ -7,7 +7,8 @@
 
 #include <string>
 #include <odb/core.hxx>
-#include <>
+#include <odb/boost/date-time/mysql/posix-time-mapping.hxx>
+#include <odb/boost/date-time/mysql/posix-time-traits.hxx>
 
 
 #pragma db object
@@ -16,7 +17,7 @@ class User {
 
 private:
 #pragma db id not_null column("id")
-    long id_{};
+    unsigned long long id_{};
 #pragma db not_null column("user_name")
     std::string username_;
 #pragma db not_null column("password")
@@ -24,13 +25,13 @@ private:
 #pragma db not_null column("age")
     int age_{};
 #pragma db not_null column("birthday") type("DATETIME")
-    unsigned long long birthday_{};
+    boot::posix_time::ptime birthday_{};
 #pragma db not_null column("create_time") type("DATETIME")
-    unsigned long long create_time_{};
+    boot::posix_time::ptime create_time_{};
 #pragma db not_null column("create_user")
     std::string create_user_;
 #pragma db not_null column("update_time") type("DATETIME")
-    unsigned long long update_time_{};
+    boot::posix_time::ptime update_time_{};
 #pragma db not_null column("update_user")
     std::string update_user_;
 
