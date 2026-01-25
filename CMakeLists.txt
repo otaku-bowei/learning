@@ -7,24 +7,41 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+
 # 创建可执行文件
 file(GLOB_RECURSE SOURCES
         "*.cpp"
         "entity/*.cpp"
         "demo/*/*.cpp"
+        "entity/model/*.cpp"
+        "mapper/*.cpp"
+        "include/*.cpp"
+        "config/*.cpp"
+)
+file(GLOB_RECURSE ODB_SOURCES
+        "entity/model/*.cxx"
+        "entity/model/*.hxx"
+        "entity/model/*.ixx"
 )
 file(GLOB_RECURSE HEADERS
-        "*.h"
-        "include/*.h"
-        "entity/*.h"
+        "*.cpp"
+        "entity/*.cpp"
+        "demo/*/*.cpp"
+        "entity/model/*.cpp"
+        "mapper/*.cpp"
+        "include/*.cpp"
+        "config/*.cpp"
 )
 
 # 包引入，定义包的编译后的执行路径，并关联头文件
-set(ODB_COMPILER ${odb_SOURCE_DIR}/bin/odb)
-set(BOOST_INCLUDE_DIRS ${libodb-boot_SOURCE_DIR}/bin/boot)
+set(BASE_INCLUDE_DIRS /usr/include)  # Linux默认路径
+
+
+set(ODB_COMPILER ${BASE_INCLUDE_DIRS}/odb)
+set(BOOST_INCLUDE_DIRS ${BASE_INCLUDE_DIRS}/odb/boost)
 include_directories(
         include
-        ${odb_SOURCE_DIR}  # ODB编译器头文件
+        ${ODB_COMPILER}  # ODB编译器头文件
         ${BOOST_INCLUDE_DIRS}
 )
 link_directories(/usr/lib/x86_64-linux-gnu)
@@ -33,21 +50,13 @@ link_libraries(
         odb-mysql
         odb-sqlite
         mysqlclient
-        libodb-boot
+        odb-boost
         sqlite3
         pthread
 )
 
-add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS}
-        entity/model/User.cpp
-        include/User.h
-        include/User-odb.cxx
-        include/User-odb.hxx
-        include/User-odb.ixx
-        config/MysqlDb.cpp
-        include/MysqlDb.h
-        mapper/UserDao.cpp
-        include/UserDao.h)# 创建可执行文件
+add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${ODB_SOURCES}
+)# 创建可执行文件
 
 
 

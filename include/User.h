@@ -7,8 +7,7 @@
 
 #include <string>
 #include <odb/core.hxx>
-#include <odb/boost/date-time/mysql/posix-time-mapping.hxx>
-#include <odb/boost/date-time/mysql/posix-time-traits.hxx>
+#include <boost/date_time/posix_time/posix_time.hpp>
 
 
 #pragma db object
@@ -24,29 +23,31 @@ private:
     std::string password_;
 #pragma db not_null column("age")
     int age_{};
-#pragma db not_null column("birthday") type("DATETIME")
-    boot::posix_time::ptime birthday_{};
-#pragma db not_null column("create_time") type("DATETIME")
-    boot::posix_time::ptime create_time_{};
+#pragma db not_null column("birthday") type("DATETIME") value(boost::posix_time::ptime)
+    boost::posix_time::ptime birthday_{};
+#pragma db not_null column("create_time") type("DATETIME") value(boost::posix_time::ptime)
+    boost::posix_time::ptime create_time_{};
 #pragma db not_null column("create_user")
     std::string create_user_;
-#pragma db not_null column("update_time") type("DATETIME")
-    boot::posix_time::ptime update_time_{};
+#pragma db not_null column("update_time") type("DATETIME") value(boost::posix_time::ptime)
+    boost::posix_time::ptime update_time_{};
+
+
 #pragma db not_null column("update_user")
     std::string update_user_;
 
 public:
     User();
-    User(long id, std::string &username, std::string &password, int age, unsigned long long birthday, unsigned long long create_time,
-         std::string &create_user, unsigned long long update_time, std::string &update_user);
+    User(unsigned long long id, std::string &username, std::string &password, int age, boost::posix_time::ptime birthday, boost::posix_time::ptime create_time,
+         std::string &create_user, boost::posix_time::ptime update_time, std::string &update_user);
 
     [[nodiscard]] std::string getUsername() const;
 
     [[nodiscard]] int getAge() const;
 
-    [[nodiscard]] unsigned long long getBirthday() const;
+    [[nodiscard]] boost::posix_time::ptime getBirthday() const;
 
-    [[nodiscard]] long getId() const;
+    [[nodiscard]] unsigned long long getId() const;
 };
 
 
