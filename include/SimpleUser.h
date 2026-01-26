@@ -10,7 +10,7 @@
 #include <boost/date_time/posix_time/posix_time.hpp>
 
 
-#pragma db object
+#pragma db object table("simple_user")
 class SimpleUser {
     friend class odb::access;
 
@@ -30,7 +30,7 @@ private:
 
 public:
     SimpleUser();
-    SimpleUser(unsigned long long id, std::string &username, std::string &password, int age);
+    SimpleUser(unsigned long long id, const std::string &username, const std::string &password, int age);
 
     [[nodiscard]] std::string getUsername() const;
 

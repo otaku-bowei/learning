@@ -92,6 +92,12 @@ add_executable(learning
 
         # mapper子目录源文件
         mapper/UserDao.cpp
+        config/MysqlPool.cpp
+        include/MysqlPool.h
+        config/ConnectionGuard.cpp
+        include/ConnectionGuard.h
+        config/ConnectionSingleton.cpp
+        include/ConnectionSingleton.h
 )
 
 

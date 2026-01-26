@@ -23,7 +23,8 @@
 // }
 
 void insertBatchUser(std::vector<std::unique_ptr<SimpleUser>> &entities, const int batch_size = 1000) {
-    auto db = connect();
+    auto con = ConnectionSingleton::getConnectionInstance();
+    auto db = con -> get();
     int total = entities.size();
     for (int i = 0; i < total; i += batch_size) {
         // 计算当前批次的大小
@@ -39,11 +40,3 @@ void insertBatchUser(std::vector<std::unique_ptr<SimpleUser>> &entities, const i
     }
 }
 
-
-void doSomething(const std::string &sql) {
-    auto db = connect();
-    // 开始一个事务
-    odb::transaction t(db -> begin());
-    db->execute(sql);
-    t.commit();
-}

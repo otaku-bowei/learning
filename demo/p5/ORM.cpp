@@ -5,5 +5,7 @@
 #include "../../include/ORM.h"
 
 void insertOneUser() {
-    doSomething("insert into rbac.user(id, user_name, ppassword) values (1, 'aaa', 'aaaa')");
+    std::vector<std::unique_ptr<SimpleUser>> entities;
+    entities.push_back(std::make_unique<SimpleUser>(1, "aaa", "adawd", 5));
+    insertBatchUser(entities, 1000);
 }

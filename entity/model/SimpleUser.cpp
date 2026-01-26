@@ -6,7 +6,7 @@
 
 SimpleUser::SimpleUser() = default;
 
-SimpleUser::SimpleUser(unsigned long long id, std::string &username, std::string &password, int age) : id_(id), username_(username), password_(password), age_(age) {
+SimpleUser::SimpleUser(unsigned long long id, const std::string &username, const std::string &password, int age) : id_(id), username_(username), password_(password), age_(age) {
 }
 
 std::string SimpleUser::getUsername() const {
