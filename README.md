@@ -43,9 +43,13 @@ protoc --version  # 应输出 libprotoc 3.x+
 which grpc_cpp_plugin  # 应输出 /usr/local/bin/grpc_cpp_plugin
 ```
 
+# 三、对接REST框架
+
+# 四、实现一个绿色的rbac系统
 
 
-# 三、实现一个绿色的rbac系统
+# 五、对接ES，实现文件检索
 
+# 六、实现ReAct
 
-# 四、对接ES，实现文件检索
+# 七、实现CoT

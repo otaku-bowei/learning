@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package user_service;
+
+// 用户服务定义
+service UserService {
+    // 获取用户信息
+    rpc GetUser (UserRequest) returns (UserResponse);
+
+    // 创建用户
+    rpc CreateUser (User) returns (UserResponse);
+
+    // 双向流式 RPC
+    rpc StreamUsers (stream User) returns (stream UserResponse);
+}
+
+message UserRequest {
+    int64 id = 1;
+}
+
+message User {
+    string name = 2;
+    string email = 3;
+    int32 age = 4;
+}
+
+message UserResponse {
+    int32 code = 1;
+    string message = 2;
+    User user = 3;
+}
