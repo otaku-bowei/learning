@@ -10,13 +10,13 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # 创建可执行文件
 file(GLOB_RECURSE SOURCES
         "*.cpp"
-        "entity/*.cpp"
+        "src/entity/*.cpp"
         "demo/*/*.cpp"
 )
 file(GLOB_RECURSE HEADERS
         "*.h"
         "include/*.h"
-        "entity/*.h"
+        "src/entity/*.h"
 )
 
 # 包引入，定义包的编译后的执行路径，并关联头文件
@@ -39,14 +39,14 @@ link_libraries(
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS}
-        entity/model/User.cpp
+        src/entity/model/User.cpp
         include/User.h
         include/User-odb.cxx
         include/User-odb.hxx
         include/User-odb.ixx
-        config/MysqlDb.cpp
+        src/config/MysqlDb.cpp
         include/MysqlDb.h
-        mapper/UserDao.cpp
+        src/mapper/UserDao.cpp
         include/UserDao.h)# 创建可执行文件
 
 
