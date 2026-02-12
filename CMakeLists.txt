@@ -33,7 +33,6 @@ include_directories(
         /usr/include
         /usr/include/grpcpp
         ${odb_SOURCE_DIR}  # ODB编译器头文件
-        ${grpc_SOURCE_DIR}
         ${BOOST_INCLUDE_DIRS}
 )
 link_directories(/usr/lib/x86_64-linux-gnu)
@@ -45,10 +44,6 @@ link_libraries(
         libodb-boot
         sqlite3
         pthread
-        grpc++
-        grpcpp
-        grpc
-        protobuf
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS}
