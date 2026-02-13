@@ -1,1 +1,0 @@
-无法启动 CMake 可执行文件 '\usr\bin\cmake': Cannot connect to the Docker daemon at npipe:////./pipe/docker_engine. Is the docker daemon running? 配置 禁用配置文件

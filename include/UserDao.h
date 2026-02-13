@@ -6,15 +6,17 @@
 #define LEARNING_USERDAO_H
 #include <memory>   // std::unique_ptr
 #include <iostream>
-#include "MysqlDb.h"
-#include "User-odb.hxx"
+#include "ConnectionGuard.h"
+// #include "../entity/model/User-odb.hxx"
+#include "../entity/model/SimpleUser-odb.hxx"
+#include "ConnectionSingleton.h"
 
 class UserDao {
 };
 
 //CURD
-void insertBatchUser(std::vector<std::unique_ptr<User>> &entities, int batch_size);
+// void insertBatchUser(std::vector<std::unique_ptr<User>> &entities, int batch_size);
+void insertBatchUser(std::vector<std::unique_ptr<SimpleUser>> &entities, int batch_size);
 
-void doSomething(const std::string &sql);
 
 #endif //LEARNING_USERDAO_H

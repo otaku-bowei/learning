@@ -6,7 +6,7 @@
 
 #include <odb/pre.hxx>
 
-#include "User-odb.hxx"
+#include "SimpleUser-odb.hxx"
 
 #include <cassert>
 #include <cstring>  // std::memcpy
@@ -26,10 +26,10 @@
 
 namespace odb
 {
-  // User
+  // SimpleUser
   //
 
-  struct access::object_traits_impl< ::User, id_mysql >::extra_statement_cache_type
+  struct access::object_traits_impl< ::SimpleUser, id_mysql >::extra_statement_cache_type
   {
     extra_statement_cache_type (
       mysql::connection&,
@@ -41,8 +41,8 @@ namespace odb
     }
   };
 
-  access::object_traits_impl< ::User, id_mysql >::id_type
-  access::object_traits_impl< ::User, id_mysql >::
+  access::object_traits_impl< ::SimpleUser, id_mysql >::id_type
+  access::object_traits_impl< ::SimpleUser, id_mysql >::
   id (const image_type& i)
   {
     mysql::database* db (0);
@@ -51,8 +51,8 @@ namespace odb
     id_type id;
     {
       mysql::value_traits<
-          long int,
-          mysql::id_longlong >::set_value (
+          long long unsigned int,
+          mysql::id_ulonglong >::set_value (
         id,
         i.id_value,
         i.id_null);
@@ -61,7 +61,7 @@ namespace odb
     return id;
   }
 
-  bool access::object_traits_impl< ::User, id_mysql >::
+  bool access::object_traits_impl< ::SimpleUser, id_mysql >::
   grow (image_type& i,
         my_bool* t)
   {
@@ -94,29 +94,9 @@ namespace odb
     //
     t[3UL] = 0;
 
-    // birthday_
-    //
-    t[4UL] = 0;
-
-    // create_time_
-    //
-    t[5UL] = 0;
-
-    // create_user_
-    //
-    if (t[6UL])
-    {
-      i.create_user_value.capacity (i.create_user_size);
-      grew = true;
-    }
-
-    // update_time_
-    //
-    t[7UL] = 0;
-
     // update_user_
     //
-    if (t[8UL])
+    if (t[4UL])
     {
       i.update_user_value.capacity (i.update_user_size);
       grew = true;
@@ -125,7 +105,7 @@ namespace odb
     return grew;
   }
 
-  void access::object_traits_impl< ::User, id_mysql >::
+  void access::object_traits_impl< ::SimpleUser, id_mysql >::
   bind (MYSQL_BIND* b,
         image_type& i,
         mysql::statement_kind sk)
@@ -141,7 +121,7 @@ namespace odb
     if (sk != statement_update)
     {
       b[n].buffer_type = MYSQL_TYPE_LONGLONG;
-      b[n].is_unsigned = 0;
+      b[n].is_unsigned = 1;
       b[n].buffer = &i.id_value;
       b[n].is_null = &i.id_null;
       n++;
@@ -175,37 +155,6 @@ namespace odb
     b[n].is_null = &i.age_null;
     n++;
 
-    // birthday_
-    //
-    b[n].buffer_type = MYSQL_TYPE_DATETIME;
-    b[n].buffer = &i.birthday_value;
-    b[n].is_null = &i.birthday_null;
-    n++;
-
-    // create_time_
-    //
-    b[n].buffer_type = MYSQL_TYPE_DATETIME;
-    b[n].buffer = &i.create_time_value;
-    b[n].is_null = &i.create_time_null;
-    n++;
-
-    // create_user_
-    //
-    b[n].buffer_type = MYSQL_TYPE_STRING;
-    b[n].buffer = i.create_user_value.data ();
-    b[n].buffer_length = static_cast<unsigned long> (
-      i.create_user_value.capacity ());
-    b[n].length = &i.create_user_size;
-    b[n].is_null = &i.create_user_null;
-    n++;
-
-    // update_time_
-    //
-    b[n].buffer_type = MYSQL_TYPE_DATETIME;
-    b[n].buffer = &i.update_time_value;
-    b[n].is_null = &i.update_time_null;
-    n++;
-
     // update_user_
     //
     b[n].buffer_type = MYSQL_TYPE_STRING;
@@ -217,17 +166,17 @@ namespace odb
     n++;
   }
 
-  void access::object_traits_impl< ::User, id_mysql >::
+  void access::object_traits_impl< ::SimpleUser, id_mysql >::
   bind (MYSQL_BIND* b, id_image_type& i)
   {
     std::size_t n (0);
     b[n].buffer_type = MYSQL_TYPE_LONGLONG;
-    b[n].is_unsigned = 0;
+    b[n].is_unsigned = 1;
     b[n].buffer = &i.id_value;
     b[n].is_null = &i.id_null;
   }
 
-  bool access::object_traits_impl< ::User, id_mysql >::
+  bool access::object_traits_impl< ::SimpleUser, id_mysql >::
   init (image_type& i,
         const object_type& o,
         mysql::statement_kind sk)
@@ -244,13 +193,13 @@ namespace odb
     //
     if (sk == statement_insert)
     {
-      long int const& v =
+      long long unsigned int const& v =
         o.id_;
 
       bool is_null (false);
       mysql::value_traits<
-          long int,
-          mysql::id_longlong >::set_image (
+          long long unsigned int,
+          mysql::id_ulonglong >::set_image (
         i.id_value, is_null, v);
       i.id_null = is_null;
     }
@@ -311,69 +260,6 @@ namespace odb
       i.age_null = is_null;
     }
 
-    // birthday_
-    //
-    {
-      long long unsigned int const& v =
-        o.birthday_;
-
-      bool is_null (false);
-      mysql::value_traits<
-          long long unsigned int,
-          mysql::id_datetime >::set_image (
-        i.birthday_value, is_null, v);
-      i.birthday_null = is_null;
-    }
-
-    // create_time_
-    //
-    {
-      long long unsigned int const& v =
-        o.create_time_;
-
-      bool is_null (false);
-      mysql::value_traits<
-          long long unsigned int,
-          mysql::id_datetime >::set_image (
-        i.create_time_value, is_null, v);
-      i.create_time_null = is_null;
-    }
-
-    // create_user_
-    //
-    {
-      ::std::string const& v =
-        o.create_user_;
-
-      bool is_null (false);
-      std::size_t size (0);
-      std::size_t cap (i.create_user_value.capacity ());
-      mysql::value_traits<
-          ::std::string,
-          mysql::id_string >::set_image (
-        i.create_user_value,
-        size,
-        is_null,
-        v);
-      i.create_user_null = is_null;
-      i.create_user_size = static_cast<unsigned long> (size);
-      grew = grew || (cap != i.create_user_value.capacity ());
-    }
-
-    // update_time_
-    //
-    {
-      long long unsigned int const& v =
-        o.update_time_;
-
-      bool is_null (false);
-      mysql::value_traits<
-          long long unsigned int,
-          mysql::id_datetime >::set_image (
-        i.update_time_value, is_null, v);
-      i.update_time_null = is_null;
-    }
-
     // update_user_
     //
     {
@@ -398,7 +284,7 @@ namespace odb
     return grew;
   }
 
-  void access::object_traits_impl< ::User, id_mysql >::
+  void access::object_traits_impl< ::SimpleUser, id_mysql >::
   init (object_type& o,
         const image_type& i,
         database* db)
@@ -410,12 +296,12 @@ namespace odb
     // id_
     //
     {
-      long int& v =
+      long long unsigned int& v =
         o.id_;
 
       mysql::value_traits<
-          long int,
-          mysql::id_longlong >::set_value (
+          long long unsigned int,
+          mysql::id_ulonglong >::set_value (
         v,
         i.id_value,
         i.id_null);
@@ -465,63 +351,6 @@ namespace odb
         i.age_null);
     }
 
-    // birthday_
-    //
-    {
-      long long unsigned int& v =
-        o.birthday_;
-
-      mysql::value_traits<
-          long long unsigned int,
-          mysql::id_datetime >::set_value (
-        v,
-        i.birthday_value,
-        i.birthday_null);
-    }
-
-    // create_time_
-    //
-    {
-      long long unsigned int& v =
-        o.create_time_;
-
-      mysql::value_traits<
-          long long unsigned int,
-          mysql::id_datetime >::set_value (
-        v,
-        i.create_time_value,
-        i.create_time_null);
-    }
-
-    // create_user_
-    //
-    {
-      ::std::string& v =
-        o.create_user_;
-
-      mysql::value_traits<
-          ::std::string,
-          mysql::id_string >::set_value (
-        v,
-        i.create_user_value,
-        i.create_user_size,
-        i.create_user_null);
-    }
-
-    // update_time_
-    //
-    {
-      long long unsigned int& v =
-        o.update_time_;
-
-      mysql::value_traits<
-          long long unsigned int,
-          mysql::id_datetime >::set_value (
-        v,
-        i.update_time_value,
-        i.update_time_null);
-    }
-
     // update_user_
     //
     {
@@ -538,84 +367,68 @@ namespace odb
     }
   }
 
-  void access::object_traits_impl< ::User, id_mysql >::
+  void access::object_traits_impl< ::SimpleUser, id_mysql >::
   init (id_image_type& i, const id_type& id)
   {
     {
       bool is_null (false);
       mysql::value_traits<
-          long int,
-          mysql::id_longlong >::set_image (
+          long long unsigned int,
+          mysql::id_ulonglong >::set_image (
         i.id_value, is_null, id);
       i.id_null = is_null;
     }
   }
 
-  const char access::object_traits_impl< ::User, id_mysql >::persist_statement[] =
-  "INSERT INTO `User` "
+  const char access::object_traits_impl< ::SimpleUser, id_mysql >::persist_statement[] =
+  "INSERT INTO `simple_user` "
   "(`id`, "
   "`user_name`, "
   "`password`, "
   "`age`, "
-  "`birthday`, "
-  "`create_time`, "
-  "`create_user`, "
-  "`update_time`, "
   "`update_user`) "
   "VALUES "
-  "(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+  "(?, ?, ?, ?, ?)";
 
-  const char access::object_traits_impl< ::User, id_mysql >::find_statement[] =
+  const char access::object_traits_impl< ::SimpleUser, id_mysql >::find_statement[] =
   "SELECT "
-  "`User`.`id`, "
-  "`User`.`user_name`, "
-  "`User`.`password`, "
-  "`User`.`age`, "
-  "`User`.`birthday`, "
-  "`User`.`create_time`, "
-  "`User`.`create_user`, "
-  "`User`.`update_time`, "
-  "`User`.`update_user` "
-  "FROM `User` "
-  "WHERE `User`.`id`=?";
+  "`simple_user`.`id`, "
+  "`simple_user`.`user_name`, "
+  "`simple_user`.`password`, "
+  "`simple_user`.`age`, "
+  "`simple_user`.`update_user` "
+  "FROM `simple_user` "
+  "WHERE `simple_user`.`id`=?";
 
-  const char access::object_traits_impl< ::User, id_mysql >::update_statement[] =
-  "UPDATE `User` "
+  const char access::object_traits_impl< ::SimpleUser, id_mysql >::update_statement[] =
+  "UPDATE `simple_user` "
   "SET "
   "`user_name`=?, "
   "`password`=?, "
   "`age`=?, "
-  "`birthday`=?, "
-  "`create_time`=?, "
-  "`create_user`=?, "
-  "`update_time`=?, "
   "`update_user`=? "
   "WHERE `id`=?";
 
-  const char access::object_traits_impl< ::User, id_mysql >::erase_statement[] =
-  "DELETE FROM `User` "
+  const char access::object_traits_impl< ::SimpleUser, id_mysql >::erase_statement[] =
+  "DELETE FROM `simple_user` "
   "WHERE `id`=?";
 
-  const char access::object_traits_impl< ::User, id_mysql >::query_statement[] =
+  const char access::object_traits_impl< ::SimpleUser, id_mysql >::query_statement[] =
   "SELECT "
-  "`User`.`id`, "
-  "`User`.`user_name`, "
-  "`User`.`password`, "
-  "`User`.`age`, "
-  "`User`.`birthday`, "
-  "`User`.`create_time`, "
-  "`User`.`create_user`, "
-  "`User`.`update_time`, "
-  "`User`.`update_user` "
-  "FROM `User`";
+  "`simple_user`.`id`, "
+  "`simple_user`.`user_name`, "
+  "`simple_user`.`password`, "
+  "`simple_user`.`age`, "
+  "`simple_user`.`update_user` "
+  "FROM `simple_user`";
 
-  const char access::object_traits_impl< ::User, id_mysql >::erase_query_statement[] =
-  "DELETE FROM `User`";
+  const char access::object_traits_impl< ::SimpleUser, id_mysql >::erase_query_statement[] =
+  "DELETE FROM `simple_user`";
 
-  const char access::object_traits_impl< ::User, id_mysql >::table_name[] =
-  "`User`";
+  const char access::object_traits_impl< ::SimpleUser, id_mysql >::table_name[] =
+  "`simple_user`";
 
-  void access::object_traits_impl< ::User, id_mysql >::
+  void access::object_traits_impl< ::SimpleUser, id_mysql >::
   persist (database& db, const object_type& obj)
   {
     using namespace mysql;
@@ -652,7 +465,7 @@ namespace odb
               callback_event::post_persist);
   }
 
-  void access::object_traits_impl< ::User, id_mysql >::
+  void access::object_traits_impl< ::SimpleUser, id_mysql >::
   update (database& db, const object_type& obj)
   {
     ODB_POTENTIALLY_UNUSED (db);
@@ -711,7 +524,7 @@ namespace odb
     pointer_cache_traits::update (db, obj);
   }
 
-  void access::object_traits_impl< ::User, id_mysql >::
+  void access::object_traits_impl< ::SimpleUser, id_mysql >::
   erase (database& db, const id_type& id)
   {
     using namespace mysql;
@@ -738,8 +551,8 @@ namespace odb
     pointer_cache_traits::erase (db, id);
   }
 
-  access::object_traits_impl< ::User, id_mysql >::pointer_type
-  access::object_traits_impl< ::User, id_mysql >::
+  access::object_traits_impl< ::SimpleUser, id_mysql >::pointer_type
+  access::object_traits_impl< ::SimpleUser, id_mysql >::
   find (database& db, const id_type& id)
   {
     using namespace mysql;
@@ -794,7 +607,7 @@ namespace odb
     return p;
   }
 
-  bool access::object_traits_impl< ::User, id_mysql >::
+  bool access::object_traits_impl< ::SimpleUser, id_mysql >::
   find (database& db, const id_type& id, object_type& obj)
   {
     using namespace mysql;
@@ -828,7 +641,7 @@ namespace odb
     return true;
   }
 
-  bool access::object_traits_impl< ::User, id_mysql >::
+  bool access::object_traits_impl< ::SimpleUser, id_mysql >::
   reload (database& db, object_type& obj)
   {
     using namespace mysql;
@@ -857,7 +670,7 @@ namespace odb
     return true;
   }
 
-  bool access::object_traits_impl< ::User, id_mysql >::
+  bool access::object_traits_impl< ::SimpleUser, id_mysql >::
   find_ (statements_type& sts,
          const id_type* id)
   {
@@ -908,8 +721,8 @@ namespace odb
     return r != select_statement::no_data;
   }
 
-  result< access::object_traits_impl< ::User, id_mysql >::object_type >
-  access::object_traits_impl< ::User, id_mysql >::
+  result< access::object_traits_impl< ::SimpleUser, id_mysql >::object_type >
+  access::object_traits_impl< ::SimpleUser, id_mysql >::
   query (database& db, const query_base_type& q)
   {
     using namespace mysql;
@@ -959,7 +772,7 @@ namespace odb
     return result<object_type> (r);
   }
 
-  unsigned long long access::object_traits_impl< ::User, id_mysql >::
+  unsigned long long access::object_traits_impl< ::SimpleUser, id_mysql >::
   erase_query (database& db, const query_base_type& q)
   {
     using namespace mysql;

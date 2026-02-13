@@ -4,8 +4,8 @@
 // compiler for C++.
 //
 
-#ifndef USER_ODB_HXX
-#define USER_ODB_HXX
+#ifndef SIMPLE_USER_ODB_HXX
+#define SIMPLE_USER_ODB_HXX
 
 #include <odb/version.hxx>
 
@@ -15,7 +15,7 @@
 
 #include <odb/pre.hxx>
 
-#include "User.h"
+#include "SimpleUser.h"
 
 #include <memory>
 #include <cstddef>
@@ -36,25 +36,25 @@
 
 namespace odb
 {
-  // User
+  // SimpleUser
   //
   template <>
-  struct class_traits< ::User >
+  struct class_traits< ::SimpleUser >
   {
     static const class_kind kind = class_object;
   };
 
   template <>
-  class access::object_traits< ::User >
+  class access::object_traits< ::SimpleUser >
   {
     public:
-    typedef ::User object_type;
-    typedef ::User* pointer_type;
+    typedef ::SimpleUser object_type;
+    typedef ::SimpleUser* pointer_type;
     typedef odb::pointer_traits<pointer_type> pointer_traits;
 
     static const bool polymorphic = false;
 
-    typedef long int id_type;
+    typedef long long unsigned int id_type;
 
     static const bool auto_id = false;
 
@@ -89,19 +89,19 @@ namespace odb
 
 namespace odb
 {
-  // User
+  // SimpleUser
   //
   template <typename A>
-  struct query_columns< ::User, id_mysql, A >
+  struct query_columns< ::SimpleUser, id_mysql, A >
   {
     // id
     //
     typedef
     mysql::query_column<
       mysql::value_traits<
-        long int,
-        mysql::id_longlong >::query_type,
-      mysql::id_longlong >
+        long long unsigned int,
+        mysql::id_ulonglong >::query_type,
+      mysql::id_ulonglong >
     id_type_;
 
     static const id_type_ id;
@@ -142,54 +142,6 @@ namespace odb
 
     static const age_type_ age;
 
-    // birthday
-    //
-    typedef
-    mysql::query_column<
-      mysql::value_traits<
-        long long unsigned int,
-        mysql::id_datetime >::query_type,
-      mysql::id_datetime >
-    birthday_type_;
-
-    static const birthday_type_ birthday;
-
-    // create_time
-    //
-    typedef
-    mysql::query_column<
-      mysql::value_traits<
-        long long unsigned int,
-        mysql::id_datetime >::query_type,
-      mysql::id_datetime >
-    create_time_type_;
-
-    static const create_time_type_ create_time;
-
-    // create_user
-    //
-    typedef
-    mysql::query_column<
-      mysql::value_traits<
-        ::std::string,
-        mysql::id_string >::query_type,
-      mysql::id_string >
-    create_user_type_;
-
-    static const create_user_type_ create_user;
-
-    // update_time
-    //
-    typedef
-    mysql::query_column<
-      mysql::value_traits<
-        long long unsigned int,
-        mysql::id_datetime >::query_type,
-      mysql::id_datetime >
-    update_time_type_;
-
-    static const update_time_type_ update_time;
-
     // update_user
     //
     typedef
@@ -204,64 +156,44 @@ namespace odb
   };
 
   template <typename A>
-  const typename query_columns< ::User, id_mysql, A >::id_type_
-  query_columns< ::User, id_mysql, A >::
+  const typename query_columns< ::SimpleUser, id_mysql, A >::id_type_
+  query_columns< ::SimpleUser, id_mysql, A >::
   id (A::table_name, "`id`", 0);
 
   template <typename A>
-  const typename query_columns< ::User, id_mysql, A >::username_type_
-  query_columns< ::User, id_mysql, A >::
+  const typename query_columns< ::SimpleUser, id_mysql, A >::username_type_
+  query_columns< ::SimpleUser, id_mysql, A >::
   username (A::table_name, "`user_name`", 0);
 
   template <typename A>
-  const typename query_columns< ::User, id_mysql, A >::password_type_
-  query_columns< ::User, id_mysql, A >::
+  const typename query_columns< ::SimpleUser, id_mysql, A >::password_type_
+  query_columns< ::SimpleUser, id_mysql, A >::
   password (A::table_name, "`password`", 0);
 
   template <typename A>
-  const typename query_columns< ::User, id_mysql, A >::age_type_
-  query_columns< ::User, id_mysql, A >::
+  const typename query_columns< ::SimpleUser, id_mysql, A >::age_type_
+  query_columns< ::SimpleUser, id_mysql, A >::
   age (A::table_name, "`age`", 0);
 
   template <typename A>
-  const typename query_columns< ::User, id_mysql, A >::birthday_type_
-  query_columns< ::User, id_mysql, A >::
-  birthday (A::table_name, "`birthday`", 0);
-
-  template <typename A>
-  const typename query_columns< ::User, id_mysql, A >::create_time_type_
-  query_columns< ::User, id_mysql, A >::
-  create_time (A::table_name, "`create_time`", 0);
-
-  template <typename A>
-  const typename query_columns< ::User, id_mysql, A >::create_user_type_
-  query_columns< ::User, id_mysql, A >::
-  create_user (A::table_name, "`create_user`", 0);
-
-  template <typename A>
-  const typename query_columns< ::User, id_mysql, A >::update_time_type_
-  query_columns< ::User, id_mysql, A >::
-  update_time (A::table_name, "`update_time`", 0);
-
-  template <typename A>
-  const typename query_columns< ::User, id_mysql, A >::update_user_type_
-  query_columns< ::User, id_mysql, A >::
+  const typename query_columns< ::SimpleUser, id_mysql, A >::update_user_type_
+  query_columns< ::SimpleUser, id_mysql, A >::
   update_user (A::table_name, "`update_user`", 0);
 
   template <typename A>
-  struct pointer_query_columns< ::User, id_mysql, A >:
-    query_columns< ::User, id_mysql, A >
+  struct pointer_query_columns< ::SimpleUser, id_mysql, A >:
+    query_columns< ::SimpleUser, id_mysql, A >
   {
   };
 
   template <>
-  class access::object_traits_impl< ::User, id_mysql >:
-    public access::object_traits< ::User >
+  class access::object_traits_impl< ::SimpleUser, id_mysql >:
+    public access::object_traits< ::SimpleUser >
   {
     public:
     struct id_image_type
     {
-      long long id_value;
+      unsigned long long id_value;
       my_bool id_null;
 
       std::size_t version;
@@ -271,7 +203,7 @@ namespace odb
     {
       // id_
       //
-      long long id_value;
+      unsigned long long id_value;
       my_bool id_null;
 
       // username_
@@ -290,27 +222,6 @@ namespace odb
       //
       int age_value;
       my_bool age_null;
-
-      // birthday_
-      //
-      MYSQL_TIME birthday_value;
-      my_bool birthday_null;
-
-      // create_time_
-      //
-      MYSQL_TIME create_time_value;
-      my_bool create_time_null;
-
-      // create_user_
-      //
-      details::buffer create_user_value;
-      unsigned long create_user_size;
-      my_bool create_user_null;
-
-      // update_time_
-      //
-      MYSQL_TIME update_time_value;
-      my_bool update_time_null;
 
       // update_user_
       //
@@ -357,7 +268,7 @@ namespace odb
 
     typedef mysql::query_base query_base_type;
 
-    static const std::size_t column_count = 9UL;
+    static const std::size_t column_count = 5UL;
     static const std::size_t id_column_count = 1UL;
     static const std::size_t inverse_column_count = 0UL;
     static const std::size_t readonly_column_count = 0UL;
@@ -416,17 +327,17 @@ namespace odb
   };
 
   template <>
-  class access::object_traits_impl< ::User, id_common >:
-    public access::object_traits_impl< ::User, id_mysql >
+  class access::object_traits_impl< ::SimpleUser, id_common >:
+    public access::object_traits_impl< ::SimpleUser, id_mysql >
   {
   };
 
-  // User
+  // SimpleUser
   //
 }
 
-#include "User-odb.ixx"
+#include "SimpleUser-odb.ixx"
 
 #include <odb/post.hxx>
 
-#endif // USER_ODB_HXX
+#endif // SIMPLE_USER_ODB_HXX
