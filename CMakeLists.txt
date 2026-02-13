@@ -26,11 +26,11 @@ file(GLOB_RECURSE HEADERS
 set(ODB_COMPILER ${odb_SOURCE_DIR}/bin/odb)
 set(BOOST_INCLUDE_DIRS ${libodb-boot_SOURCE_DIR}/bin/boot)
 include_directories(
+        ${odb_SOURCE_DIR}  # ODB编译器头文件
+        ${BOOST_INCLUDE_DIRS}
         include
         /usr/include
         /usr/include/grpcpp
-        ${odb_SOURCE_DIR}  # ODB编译器头文件
-        ${BOOST_INCLUDE_DIRS}
 )
 link_directories(/usr/lib/x86_64-linux-gnu)
 link_libraries(
