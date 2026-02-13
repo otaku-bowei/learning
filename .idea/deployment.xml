@@ -3,13 +3,12 @@
   <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeDeletion="false">
     <option name="confirmBeforeDeletion" value="false" />
     <serverData>
-      <paths name="远程主机 (d9d72cb6-d38b-4573-8b5f-70540ae5cb84)">
+      <paths name="远程主机 (07889727-81c3-4ce5-b130-5c8f0388b28d)">
         <serverdata>
           <mappings>
-            <mapping deploy="/cplus/project/learning" local="$PROJECT_DIR$" web="http:///learning.com" />
+            <mapping deploy="/tmp/tmp.PJFWL1sLg1/learning" local="$PROJECT_DIR$" />
           </mappings>
           <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
           </excludedPaths>
         </serverdata>

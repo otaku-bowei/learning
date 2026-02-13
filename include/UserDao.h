@@ -8,7 +8,7 @@
 #include <iostream>
 #include "ConnectionGuard.h"
 // #include "../entity/model/User-odb.hxx"
-#include "../entity/model/SimpleUser-odb.hxx"
+#include "../src/entity/model/SimpleUser-odb.hxx"
 #include "ConnectionSingleton.h"
 
 class UserDao {

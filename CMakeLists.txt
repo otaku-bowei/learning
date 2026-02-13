@@ -68,15 +68,14 @@ link_libraries(
 add_executable(learning
         # 根目录源文件
         main.cpp
-        config/MysqlDb.cpp
 
-        entity/Animal.cpp
-        entity/AnimalManager.cpp
-        entity/Cat.cpp
-        entity/CatFamily.cpp
-        entity/Dog.cpp
-        entity/DogFamily.cpp
-        entity/TrainAnimal.cpp
+        src/entity/Animal.cpp
+        src/entity/AnimalManager.cpp
+        src/entity/Cat.cpp
+        src/entity/CatFamily.cpp
+        src/entity/Dog.cpp
+        src/entity/DogFamily.cpp
+        src/entity/TrainAnimal.cpp
 
         # demo子目录源文件
         demo/p1/Polymorphism.cpp
@@ -86,18 +85,19 @@ add_executable(learning
         demo/p5/ORM.cpp
 
         # entity/model子目录源文件
-        entity/model/User.cpp
-        entity/model/SimpleUser.cpp
-        entity/model/SimpleUser-odb.cxx
+        src/entity/model/User.cpp
+        src/entity/model/SimpleUser.cpp
+        src/entity/model/SimpleUser-odb.cxx
 
         # mapper子目录源文件
-        mapper/UserDao.cpp
-        config/MysqlPool.cpp
+        src/mapper/UserDao.cpp
+        src/config/MysqlPool.cpp
         include/MysqlPool.h
-        config/ConnectionGuard.cpp
+        src/config/ConnectionGuard.cpp
         include/ConnectionGuard.h
-        config/ConnectionSingleton.cpp
+        src/config/ConnectionSingleton.cpp
         include/ConnectionSingleton.h
+        src/config/MysqlPool.cpp
 )
 
 
