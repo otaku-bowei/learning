@@ -25,13 +25,13 @@ private:
 #pragma db not_null column("age")
     int age_{};
 #pragma db not_null column("birthday") type("DATETIME")
-    boot::posix_time::ptime birthday_{};
+    long long birthday_{};
 #pragma db not_null column("create_time") type("DATETIME")
-    boot::posix_time::ptime create_time_{};
+    boost::posix_time::ptime create_time_{};
 #pragma db not_null column("create_user")
     std::string create_user_;
 #pragma db not_null column("update_time") type("DATETIME")
-    boot::posix_time::ptime update_time_{};
+    boost::posix_time::ptime update_time_{};
 #pragma db not_null column("update_user")
     std::string update_user_;
 
