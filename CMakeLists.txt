@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_TRY_COMPILE_OBJECT_PREFIX "")
+add_compile_definitions(_GLIBCXX_USE_CXX11_ABI=1)
 
 
 # 创建可执行文件
@@ -18,6 +19,7 @@ file(GLOB_RECURSE SOURCES
         "src/mapper/*.cpp"
         "include/*.cpp"
         "src/config/*.cpp"
+        "src/controller/*.cpp"
 )
 file(GLOB_RECURSE ODB_SOURCES
         "src/entity/model/*.cxx"
@@ -36,6 +38,7 @@ file(GLOB_RECURSE HEADERS
         "src/mapper/*.h"
         "include/*.h"
         "src/config/*.h"
+        "src/controller/*.h"
 )
 
 file(GLOB_RECURSE GRPC_SOURCE
@@ -53,6 +56,9 @@ set(BASE_INCLUDE_DIRS /usr/include)  # Linux默认路径
 
 set(ODB_COMPILER ${BASE_INCLUDE_DIRS}/odb)
 set(BOOST_INCLUDE_DIRS ${BASE_INCLUDE_DIRS}/odb/boost)
+set(DROGON_INCLUDE_DIRS ${BASE_INCLUDE_DIRS}/drogon)
+set(JSON_INCLUDE_DIRS ${BASE_INCLUDE_DIRS}/jsoncpp)
+set(TRANTOR_INCLUDE_DIRS ${BASE_INCLUDE_DIRS}/trantor)
 
 # 获取完整依赖
 find_package(PkgConfig REQUIRED)
@@ -64,11 +70,17 @@ include_directories(
         ${BASE_INCLUDE_DIRS}
         ${ODB_COMPILER}  # ODB编译器头文件
         ${BOOST_INCLUDE_DIRS}
+        ${DROGON_INCLUDE_DIRS}
+        ${JSON_INCLUDE_DIRS}
+        ${TRANTOR_INCLUDE_DIRS}
 
 )
 link_directories(/usr/lib/x86_64-linux-gnu)
 link_libraries(
+        -lstdc++
         -lstdc++fs
+        -lrt
+        -ldl
         odb
         odb-mysql
         odb-sqlite
@@ -76,15 +88,16 @@ link_libraries(
         odb-boost
         sqlite3
         pthread
-#        ${GRPC_LIBRARIES}
-        ${PROTOBUF_LIBRARIES}
+        drogon
+        trantor
+        jsoncpp
 )
 # 创建可执行文件
 add_executable(learning main.cpp
         ${SOURCES}
         ${ODB_SOURCES}
         ${HEADERS}
-#        ${GRPC_SOURCE}
+        #        ${GRPC_SOURCE}
 )
 
 
