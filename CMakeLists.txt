@@ -6,52 +6,69 @@ project(learning)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_TRY_COMPILE_OBJECT_PREFIX "")
 
 
 # 创建可执行文件
-#file(GLOB_RECURSE SOURCES
+file(GLOB_RECURSE SOURCES
 #        "*.cpp"
-#        "entity/*.cpp"
-#        "demo/*/*.cpp"
-#        "entity/model/*.cpp"
-#        "mapper/*.cpp"
-#        "include/*.cpp"
-#        "config/*.cpp"
-#)
-#file(GLOB_RECURSE ODB_SOURCES
-#        "entity/model/*.cxx"
-#        "entity/model/*.hxx"
-#        "entity/model/*.ixx"
-#)
-#file(GLOB_RECURSE ODB_HEADER
-#        "entity/model/*.hxx"
-#        "entity/model/*.ixx"
-#)
-#file(GLOB_RECURSE HEADERS
-#        "*.h"
-#        "entity/*.h"
-#        "demo/*/*.h"
-#        "entity/model/*.h"
-#        "mapper/*.h"
-#        "include/*.h"
-#        "config/*.h"
-#)
+        "src/entity/*.cpp"
+        "demo/*/*.cpp"
+        "src/entity/model/*.cpp"
+        "src/mapper/*.cpp"
+        "include/*.cpp"
+        "src/config/*.cpp"
+)
+file(GLOB_RECURSE ODB_SOURCES
+        "src/entity/model/*.cxx"
+        "src/entity/model/*.hxx"
+#        "src/entity/model/*.ixx"
+)
+# .ixx 文件只用于包含，不编译
+set(ODB_TEMPLATES
+        "src/entity/model/*.ixx"
+)
+file(GLOB_RECURSE HEADERS
+        "*.h"
+        "src/entity/*.h"
+        "demo/*/*.h"
+        "src/entity/model/*.h"
+        "src/mapper/*.h"
+        "include/*.h"
+        "src/config/*.h"
+)
+
+file(GLOB_RECURSE GRPC_SOURCE
+        "src/service/*.h"
+        "src/service/*.cc"
+        "src/service/grpc/*.h"
+        "src/service/grpc/*.cc"
+)
+
+
+
 
 # 包引入，定义包的编译后的执行路径，并关联头文件
 set(BASE_INCLUDE_DIRS /usr/include)  # Linux默认路径
 
-
 set(ODB_COMPILER ${BASE_INCLUDE_DIRS}/odb)
 set(BOOST_INCLUDE_DIRS ${BASE_INCLUDE_DIRS}/odb/boost)
+
+# 获取完整依赖
+find_package(PkgConfig REQUIRED)
+#pkg_check_modules(GRPC REQUIRED grpc++ grpc)
+pkg_check_modules(PROTOBUF REQUIRED protobuf)
+
 include_directories(
         include
+        ${BASE_INCLUDE_DIRS}
         ${ODB_COMPILER}  # ODB编译器头文件
         ${BOOST_INCLUDE_DIRS}
-#        ${HEADERS}
 
 )
 link_directories(/usr/lib/x86_64-linux-gnu)
 link_libraries(
+        -lstdc++fs
         odb
         odb-mysql
         odb-sqlite
@@ -59,47 +76,16 @@ link_libraries(
         odb-boost
         sqlite3
         pthread
+#        ${GRPC_LIBRARIES}
+        ${PROTOBUF_LIBRARIES}
 )
-
-#add_executable(${PROJECT_NAME}
-#        ${SOURCES}
-#        ${ODB_SOURCES}
-#)# 创建可执行文件
-add_executable(learning
-        # 根目录源文件
-        main.cpp
-
-        src/entity/Animal.cpp
-        src/entity/AnimalManager.cpp
-        src/entity/Cat.cpp
-        src/entity/CatFamily.cpp
-        src/entity/Dog.cpp
-        src/entity/DogFamily.cpp
-        src/entity/TrainAnimal.cpp
-
-        # demo子目录源文件
-        demo/p1/Polymorphism.cpp
-        demo/p2/Collections.cpp
-        demo/p3/LambdaTest.cpp
-        demo/p4/DesignModel.cpp
-        demo/p5/ORM.cpp
-
-        # entity/model子目录源文件
-        src/entity/model/User.cpp
-        src/entity/model/SimpleUser.cpp
-        src/entity/model/SimpleUser-odb.cxx
-
-        # mapper子目录源文件
-        src/mapper/UserDao.cpp
-        src/config/MysqlPool.cpp
-        include/MysqlPool.h
-        src/config/ConnectionGuard.cpp
-        include/ConnectionGuard.h
-        src/config/ConnectionSingleton.cpp
-        include/ConnectionSingleton.h
-        src/config/MysqlPool.cpp
+# 创建可执行文件
+add_executable(learning main.cpp
+        ${SOURCES}
+        ${ODB_SOURCES}
+        ${HEADERS}
+#        ${GRPC_SOURCE}
 )
-
 
 
 # 添加编译定义
