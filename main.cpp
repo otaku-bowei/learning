@@ -8,6 +8,7 @@
 #include "include/LambdaTest.h"
 #include "include/DesignModel.h"
 #include "include/ORM.h"
+#include "include/Drogon.h"
 
 
 int main() {
@@ -17,5 +18,6 @@ int main() {
     // testLambdaTest();
     // workerFind();
     // factory();
-    insertOneUser();
+    // insertOneUser();
+    handle();
 }

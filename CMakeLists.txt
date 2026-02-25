@@ -97,6 +97,8 @@ add_executable(learning main.cpp
         ${SOURCES}
         ${ODB_SOURCES}
         ${HEADERS}
+        demo/p7/Drogon.cpp
+        include/Drogon.h
         #        ${GRPC_SOURCE}
 )
 

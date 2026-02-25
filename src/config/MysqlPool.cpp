@@ -12,7 +12,7 @@ MysqlPool::MysqlPool(size_t max_pool_size)
     user_ = "root";
     password_ = "IboTxData5566";
     database_ = "rbac";
-    host_ = "172.19.176.1";
+    host_ = "localhost";
     port_ = 3306;
     socket_ = "";
 
