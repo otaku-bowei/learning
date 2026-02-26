@@ -59,6 +59,7 @@ set(BOOST_INCLUDE_DIRS ${BASE_INCLUDE_DIRS}/odb/boost)
 set(DROGON_INCLUDE_DIRS ${BASE_INCLUDE_DIRS}/drogon)
 set(JSON_INCLUDE_DIRS ${BASE_INCLUDE_DIRS}/jsoncpp)
 set(TRANTOR_INCLUDE_DIRS ${BASE_INCLUDE_DIRS}/trantor)
+set(SPDLOG_INCLUDE_DIRS ${BASE_INCLUDE_DIRS}/spdlog)
 
 # 获取完整依赖
 find_package(PkgConfig REQUIRED)
@@ -73,6 +74,7 @@ include_directories(
         ${DROGON_INCLUDE_DIRS}
         ${JSON_INCLUDE_DIRS}
         ${TRANTOR_INCLUDE_DIRS}
+        ${SPDLOG_INCLUDE_DIRS}
 
 )
 link_directories(/usr/lib/x86_64-linux-gnu)
@@ -91,15 +93,17 @@ link_libraries(
         drogon
         trantor
         jsoncpp
+        spdlog
 )
 # 创建可执行文件
 add_executable(learning main.cpp
         ${SOURCES}
         ${ODB_SOURCES}
         ${HEADERS}
-        demo/p7/Drogon.cpp
-        include/Drogon.h
-        #        ${GRPC_SOURCE}
+        src/config/Logger.cpp
+        include/Logger.h
+        src/constant/LogEnum.cpp
+        include/LogEnum.h
 )
 
 

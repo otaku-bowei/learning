@@ -65,3 +65,8 @@ which grpc_cpp_plugin  # 应输出 /usr/local/bin/grpc_cpp_plugin
 # 六、实现ReAct
 
 # 七、实现CoT
+
+# 八、对接日志框架
+```
+apt install libspdlog-dev
+```

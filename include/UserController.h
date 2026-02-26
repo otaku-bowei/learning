@@ -21,10 +21,42 @@ public:
     ADD_METHOD_TO(UserController::deleteUser, "/user/{1}", Delete);
     METHOD_LIST_END
 
+    /**
+     * 获取一个用户
+     * @param req
+     * @param callback
+     * @param userId
+     */
     void getUser(const HttpRequestPtr& req, std::function<void(const HttpResponsePtr&)>&& callback, int userId);
+
+    /**
+     * 分页查询用户
+     * @param req
+     * @param callback
+     */
     void getAllUsers(const HttpRequestPtr& req, std::function<void(const HttpResponsePtr&)>&& callback);
+
+    /**
+     * 新增用户
+     * @param req
+     * @param callback
+     */
     void createUser(const HttpRequestPtr& req, std::function<void(const HttpResponsePtr&)>&& callback);
+
+    /**
+     * 用户信息编辑
+     * @param req
+     * @param callback
+     * @param userId
+     */
     void updateUser(const HttpRequestPtr& req, std::function<void(const HttpResponsePtr&)>&& callback, int userId);
+
+    /**
+     * 用户删除
+     * @param req
+     * @param callback
+     * @param userId
+     */
     void deleteUser(const HttpRequestPtr& req, std::function<void(const HttpResponsePtr&)>&& callback, int userId);
 };
 
