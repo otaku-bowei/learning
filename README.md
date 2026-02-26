@@ -4,6 +4,11 @@
 3.linux环境使用cmake编译
 4.拉取编译好的相关类
 5.使用odb包对接相关类的操作，链接需要使用编译后的类，而非定义类
+6.生成相应的类
+```
+ubuntu使用gcc13编译，需要切换gcc版本
+odb -x g++-14 -d mysql --std c++11 --generate-query --generate-schema --schema-format sql --output-dir ../src/entity/model User.h
+```
 
 # 二、对接grpc框架
 1.在linux安装grpc依赖
@@ -44,11 +49,18 @@ which grpc_cpp_plugin  # 应输出 /usr/local/bin/grpc_cpp_plugin
 ```
 
 # 三、对接REST框架
+```
+需要切换gcc14版本
+1.ubuntu安装drogon
+2.引入drogon依赖
+3.定义接口METHOD
+```
+
 
 # 四、实现一个绿色的rbac系统
 
 
-# 五、对接ES，实现文件检索
+# 五、对接ES接口，实现文件检索
 
 # 六、实现ReAct
 

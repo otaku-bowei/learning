@@ -5,7 +5,7 @@
 #ifndef LEARNING_ORM_H
 #define LEARNING_ORM_H
 
-#include "../include/UserDao.h"
+#include "../include/SimpleUserDao.h"
 class ORM {
 };
 

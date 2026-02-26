@@ -9,8 +9,36 @@
 #include <odb/core.hxx>
 #include <boost/date_time/posix_time/posix_time.hpp>
 
+// #pragma db model version(1,2)
+// namespace version1 {
+//     #pragma db object table("user")
+//     class User {
+//         friend class odb::access;
+//
+//     private:
+// #pragma db id not_null column("id")
+//         unsigned long long id_{};
+// #pragma db not_null column("user_name")
+//         std::string username_;
+// #pragma db not_null column("password")
+//         std::string password_;
+// #pragma db not_null column("age")
+//         int age_{};
+// #pragma db not_null column("birthday") type("DATETIME")
+//         boost::posix_time::ptime birthday_{};
+// #pragma db not_null column("create_time") type("DATETIME")
+//         boost::posix_time::ptime create_time_{};
+// #pragma db not_null column("create_user")
+//         std::string create_user_;
+// #pragma db not_null column("update_time") type("DATETIME")
+//         boost::posix_time::ptime update_time_{};
+// #pragma db not_null column("update_user")
+//         std::string update_user_;
+//     };
+// }
 
-#pragma db object
+
+#pragma db object table("user")
 class User {
     friend class odb::access;
 
@@ -21,24 +49,27 @@ private:
     std::string username_;
 #pragma db not_null column("password")
     std::string password_;
+// #pragma db not_null column("name") added(2)
+#pragma db not_null column("name")
+    std::string name_{};
 #pragma db not_null column("age")
     int age_{};
-#pragma db not_null column("birthday") type("DATETIME") value(boost::posix_time::ptime)
+#pragma db not_null column("birthday") type("DATETIME")
     boost::posix_time::ptime birthday_{};
-#pragma db not_null column("create_time") type("DATETIME") value(boost::posix_time::ptime)
+#pragma db not_null column("create_time") type("DATETIME")
     boost::posix_time::ptime create_time_{};
 #pragma db not_null column("create_user")
     std::string create_user_;
-#pragma db not_null column("update_time") type("DATETIME") value(boost::posix_time::ptime)
+#pragma db not_null column("update_time") type("DATETIME")
     boost::posix_time::ptime update_time_{};
-
-
 #pragma db not_null column("update_user")
     std::string update_user_;
 
 public:
     User();
-    User(unsigned long long id, std::string &username, std::string &password, int age, boost::posix_time::ptime birthday, boost::posix_time::ptime create_time,
+
+    User(unsigned long long id, std::string &username, std::string &password, int age,
+         boost::posix_time::ptime birthday, boost::posix_time::ptime create_time,
          std::string &create_user, boost::posix_time::ptime update_time, std::string &update_user);
 
     [[nodiscard]] std::string getUsername() const;

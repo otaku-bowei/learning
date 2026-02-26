@@ -2,12 +2,13 @@
  * compiler for C++.
  */
 
-DROP TABLE IF EXISTS `User`;
+DROP TABLE IF EXISTS `user`;
 
-CREATE TABLE `User` (
-  `id` BIGINT NOT NULL PRIMARY KEY,
+CREATE TABLE `user` (
+  `id` BIGINT UNSIGNED NOT NULL PRIMARY KEY,
   `user_name` TEXT NOT NULL,
   `password` TEXT NOT NULL,
+  `name` TEXT NOT NULL,
   `age` INT NOT NULL,
   `birthday` DATETIME NOT NULL,
   `create_time` DATETIME NOT NULL,

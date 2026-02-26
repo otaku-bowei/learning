@@ -11,7 +11,7 @@
 #include "../src/entity/model/SimpleUser-odb.hxx"
 #include "ConnectionSingleton.h"
 
-class UserDao {
+class SimpleUserDao {
 };
 
 //CURD

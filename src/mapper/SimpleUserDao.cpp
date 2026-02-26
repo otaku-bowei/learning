@@ -2,7 +2,7 @@
 // Created by 王柏伟 on 2026/1/18.
 //
 
-#include "../include/UserDao.h"
+#include "../include/SimpleUserDao.h"
 
 
 // void insertBatchUser(std::vector<std::unique_ptr<User>> &entities, const int batch_size = 1000) {
