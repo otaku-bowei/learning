@@ -11,6 +11,4 @@ class Drogon {
 };
 
 void handle();
-
-void autowired();
 #endif //LEARNING_DROGON_H

@@ -1,4 +1,4 @@
-create table if not exists rbac.`user`
+create table if not exists rbac.user
 (
     id          bigint       not null comment '用户id'
         primary key,

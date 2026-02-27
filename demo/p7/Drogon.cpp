@@ -17,12 +17,3 @@ void handle() {
     // 运行
     app().run();
 }
-
-
-void autowired() {
-    kgr::container container;
-
-    container.invoke([](UserController &ctrl) {
-        ctrl.testInjection();
-    });
-}

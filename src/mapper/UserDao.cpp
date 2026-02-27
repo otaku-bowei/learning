@@ -5,7 +5,7 @@
 #include "../include/UserDao.h"
 
 
-void UserDao::insertBatchUser(const std::vector<std::unique_ptr<User>> &entities, const int batch_size = 1000) {
+void insertBatchUser(const std::vector<std::unique_ptr<User>> &entities, const int batch_size = 1000) {
     const auto con = ConnectionSingleton::getConnectionInstance();
     const auto db = con -> get();
     const int total = entities.size();
@@ -23,7 +23,7 @@ void UserDao::insertBatchUser(const std::vector<std::unique_ptr<User>> &entities
     }
 }
 
-void UserDao::insertUser(const std::unique_ptr<User> &entity) {
+void insertUser(const std::unique_ptr<User> &entity) {
     const auto con = ConnectionSingleton::getConnectionInstance();
     const auto db = con -> get();
     // 开始一个事务
@@ -34,17 +34,17 @@ void UserDao::insertUser(const std::unique_ptr<User> &entity) {
 }
 
 
-std::vector<std::unique_ptr<User>> UserDao::queryUsers(const std::string &db_name) {
+std::vector<std::unique_ptr<User>> queryUsers(const std::string &db_name) {
     return {};
 }
 
 
-void UserDao::updateUser(const std::unique_ptr<User> &entity) {
+void updateUser(const std::unique_ptr<User> &entity) {
 
 }
 
 
-void UserDao::deleteUser(const std::unique_ptr<User> &entity) {
+void deleteUser(const std::unique_ptr<User> &entity) {
 
 }
 

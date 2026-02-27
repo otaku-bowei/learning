@@ -1,1 +1,1 @@
-ALTER TABLE rbac.`user` ADD COLUMN name varchar(64) NOT NULL COMMENT '用户名字';
+ALTER TABLE rbac.user MODIFY COLUMN name varchar(64) NOT NULL COMMENT '用户名字';
