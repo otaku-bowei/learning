@@ -9,10 +9,19 @@
 #include <drogon/HttpController.h>
 #include <drogon/HttpResponse.h>
 #include <json/json.h>
+#include "UserDao.h"
+#include <kangaru/autowire.hpp>
 using namespace drogon;
 
+
 class UserController : public HttpController<UserController> {
+private:
+    UserDao userDao_;
+    friend auto service_map(UserController const&) -> kgr::autowire_single;
 public:
+    UserController();
+    explicit UserController(const UserDao &userDao);
+
     METHOD_LIST_BEGIN
     ADD_METHOD_TO(UserController::getUser, "/user/{1}", Get);
     ADD_METHOD_TO(UserController::getAllUsers, "/users", Get);
@@ -58,6 +67,8 @@ public:
      * @param userId
      */
     void deleteUser(const HttpRequestPtr& req, std::function<void(const HttpResponsePtr&)>&& callback, int userId);
+
+    void testInjection();
 };
 
 

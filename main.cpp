@@ -9,15 +9,10 @@
 #include "include/DesignModel.h"
 #include "include/ORM.h"
 #include "include/Drogon.h"
+#include "include/UserController.h"
+#include <kangaru/kangaru.hpp>
 
 
 int main() {
-    // testPolymorphism();
-    // testVector();
-    // testMap();
-    // testLambdaTest();
-    // workerFind();
-    // factory();
-    // insertOneUser();
-    handle();
+    autowired();
 }
