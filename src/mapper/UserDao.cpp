@@ -5,7 +5,7 @@
 #include "../include/UserDao.h"
 
 
-void insertBatchUser(const std::vector<std::unique_ptr<User>> &entities, const int batch_size = 1000) {
+void insertBatchUser(const std::vector<std::unique_ptr<User>> &entities, const int batch_size) {
     const auto con = ConnectionSingleton::getConnectionInstance();
     const auto db = con -> get();
     const int total = entities.size();

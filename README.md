@@ -7,7 +7,9 @@
 6.生成相应的类
 ```
 ubuntu使用gcc13编译，需要切换gcc版本
-odb -x g++-14 -d mysql --std c++11 --generate-query --generate-schema --schema-format sql --output-dir ../src/entity/model User.h
+odb -x g++-14 -d mysql --std c++11 --profile boost/date-time --generate-query --generate-schema --schema-format sql --output-dir ../src/entity/model User.h
+
+--profile boost/date-time 参数支持日期类型和数据库日期类型转换配置
 ```
 
 # 二、对接grpc框架
