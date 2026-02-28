@@ -8,7 +8,7 @@
 
 #include <drogon/HttpController.h>
 #include <drogon/HttpResponse.h>
-#include <json/json.h>
+#include <nlohmann/json.hpp>
 using namespace drogon;
 
 class UserController : public HttpController<UserController> {

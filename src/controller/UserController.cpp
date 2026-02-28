@@ -6,9 +6,11 @@
 #include <drogon/HttpResponse.h>
 #include <drogon/utils/Utilities.h>
 
+#include "User.h"
+
 void UserController::getUser(const HttpRequestPtr& req,
-                              std::function<void(const HttpResponsePtr&)>&& callback,
-                              int userId) {
+                             std::function<void(const HttpResponsePtr&)>&& callback,
+                             int userId) {
     Json::Value ret;
     ret["code"] = 0;
     ret["message"] = "success";
@@ -43,11 +45,16 @@ void UserController::getAllUsers(const HttpRequestPtr& req,
 void UserController::createUser(const HttpRequestPtr& req,
                                   std::function<void(const HttpResponsePtr&)>&& callback) {
     auto json = req->getJsonObject();
-
+    // 将 Json::Value 转换为 nlohmann::json
+    std::string jsonStr = Json::FastWriter().write(*json);
+    auto nlohmannJson = nlohmann::json::parse(jsonStr);
+    // 映射为对象
+    User userReq = nlohmannJson.get<User>();
     Json::Value ret;
     ret["code"] = 0;
     ret["message"] = "用户创建成功";
     ret["data"]["id"] = 100;
+
 
     auto resp = HttpResponse::newHttpJsonResponse(ret);
     callback(resp);

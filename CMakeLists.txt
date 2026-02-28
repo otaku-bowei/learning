@@ -60,6 +60,7 @@ set(DROGON_INCLUDE_DIRS ${BASE_INCLUDE_DIRS}/drogon)
 set(JSON_INCLUDE_DIRS ${BASE_INCLUDE_DIRS}/jsoncpp)
 set(TRANTOR_INCLUDE_DIRS ${BASE_INCLUDE_DIRS}/trantor)
 set(SPDLOG_INCLUDE_DIRS ${BASE_INCLUDE_DIRS}/spdlog)
+set(NLOHMANN_INCLUDE_DIRS ${BASE_INCLUDE_DIRS}/nlohmann)
 
 # 获取完整依赖
 find_package(PkgConfig REQUIRED)
@@ -75,6 +76,7 @@ include_directories(
         ${JSON_INCLUDE_DIRS}
         ${TRANTOR_INCLUDE_DIRS}
         ${SPDLOG_INCLUDE_DIRS}
+        ${NLOHMANN_INCLUDE_DIRS}
 
 )
 link_directories(/usr/lib/x86_64-linux-gnu)
@@ -104,6 +106,7 @@ add_executable(learning main.cpp
         include/Logger.h
         src/constant/LogEnum.cpp
         include/LogEnum.h
+        include/JsonSerializer.h
 )
 
 

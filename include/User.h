@@ -8,6 +8,8 @@
 #include <string>
 #include <odb/core.hxx>
 #include <boost/date_time/posix_time/posix_time.hpp>
+#include <nlohmann/json.hpp>
+#include "JsonSerializer.h"
 
 // #pragma db model version(1,2)
 // namespace version1 {
@@ -66,6 +68,10 @@ private:
     std::string update_user_;
 
 public:
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE(User,
+        id_, username_, password_, name_, age_,
+        birthday_, create_time_, create_user_, update_time_, update_user_)
+
     User();
 
     User(unsigned long long id, std::string &username, std::string &password, int age,
